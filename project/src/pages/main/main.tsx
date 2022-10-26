@@ -108,8 +108,8 @@ function Main({title, genre, year}: MainPageProps): JSX.Element {
           </ul>
 
           <div className="catalog__films-list">
-            {new Array(10).fill(null).map((value, index) => <FilmCard key={Math.floor(Math.random() * (1000 - 1 + 1)) + 1} />)}
-            {Array.from({length: 10}).map((value, index) => <FilmCard key={Math.floor(Math.random() * (1000 - 1 + 1)) + 1} />)}
+            {new Array(10).fill(null).map(() => <FilmCard key={Math.floor(Math.random() * (1000 - 1 + 1)) + 1} />)}
+            {Array.from({length: 10}).map(() => <FilmCard key={Math.floor(Math.random() * (1000 - 1 + 1)) + 1} />)}
           </div>
 
           <div className="catalog__more">
