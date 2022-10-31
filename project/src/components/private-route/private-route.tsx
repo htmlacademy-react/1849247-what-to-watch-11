@@ -3,12 +3,13 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 
 type PrivateRouteProps = {
   authorizationStatus: AuthorizationStatus;
+  children: JSX.Element;
 };
 
 function PrivateRoute({ authorizationStatus, children }: React.PropsWithChildren<PrivateRouteProps>): JSX.Element {
   return (
     authorizationStatus === AuthorizationStatus.Auth
-      ? children as JSX.Element // Просто children вызывает ошибку. Пока написал children as JSX.Element. TODO: Почему?
+      ? children
       : <Navigate to={AppRoute.SignIn} />
   );
 }

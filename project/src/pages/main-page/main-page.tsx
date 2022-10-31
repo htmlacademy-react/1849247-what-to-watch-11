@@ -1,6 +1,7 @@
 import FilmCard from '../../components/film-card/film-card';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
+import { v4 as uuidv4 } from 'uuid';
 
 type MainPageProps = {
   title: string;
@@ -115,11 +116,8 @@ function MainPage({ title, genre, year }: MainPageProps): JSX.Element {
           </ul>
 
           <div className='catalog__films-list'>
-            {new Array(10).fill(null).map(() => (
-              <FilmCard key={Math.floor(Math.random() * (1000 - 1 + 1)) + 1} />
-            ))}
-            {Array.from({ length: 10 }).map(() => (
-              <FilmCard key={Math.floor(Math.random() * (1000 - 1 + 1)) + 1} />
+            {new Array(20).fill(null).map(() => (
+              <FilmCard key={uuidv4()} />
             ))}
           </div>
 

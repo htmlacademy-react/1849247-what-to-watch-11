@@ -19,10 +19,7 @@ function App({ title, genre, year }: MainPageProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path={AppRoute.Main}
-          element={<MainPage title={title} genre={genre} year={year} />}
-        />
+        <Route path={AppRoute.Main} element={<MainPage title={title} genre={genre} year={year} />} />
         <Route path={AppRoute.SignIn} element={<SignInPage />} />
         <Route
           path={AppRoute.MyList}
@@ -32,17 +29,8 @@ function App({ title, genre, year }: MainPageProps): JSX.Element {
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Films}>
-          <Route index element={<FilmPage />} />
-          <Route path=':id'>
-            <Route index element={<FilmPage />} />
-            {/* TODO:
-            1. Ошибка - You provided a `checked` prop to a form field without an `onChange` handler.
-            2. в enum нет слеша / - как сохранить единообразие?
-             */}
-            <Route path={AppRoute.AddReview} element={<AddReviewPage />} />
-          </Route>
-        </Route>
+        <Route path={`${AppRoute.Films}/:id`} element={<FilmPage />} />
+        <Route path={`${AppRoute.Films}/:id${AppRoute.AddReview}`} element={<AddReviewPage />} />
         <Route path={AppRoute.Player}>
           <Route index element={<PlayerPage />} />
           <Route path=':id' element={<PlayerPage />} />
