@@ -1,41 +1,49 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import MainPage from '../../pages/main-page/main-page';
 import SignInPage from '../../pages/sign-in-page/sign-in-page';
 import MyListPage from '../../pages/my-list-page/my-list-page';
 import FilmPage from '../../pages/film-page/film-page';
 import AddReviewPage from '../../pages/add-review-page/add-review-page';
 import PlayerPage from '../../pages/player-page/player-page';
-import Page404 from '../../pages/404-page/404-page';
-import { AppRoute, AuthorizationStatus } from '../../const';
-import PrivateRoute from '../../components/private-route/private-route';
+import NotFoundPage from '../../pages/not-found-page/not-found-page';
 
-type MainPageProps = {
-  title: string;
-  genre: string;
-  year: number;
+import PrivateRoute from '../../components/private-route/private-route';
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { FilmType } from '../../types/films-type';
+
+type AppProps = {
+  promoFilm: FilmType;
+  films: FilmType[];
 };
 
-function App({ title, genre, year }: MainPageProps): JSX.Element {
+function App({ promoFilm, films }: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={AppRoute.Main} element={<MainPage title={title} genre={genre} year={year} />} />
+        <Route
+          path={AppRoute.Main}
+          element={<MainPage promoFilm={promoFilm} films={films} />}
+        />
+
         <Route path={AppRoute.SignIn} element={<SignInPage />} />
+
         <Route
           path={AppRoute.MyList}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <MyListPage />
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <MyListPage films={films} />
             </PrivateRoute>
           }
         />
-        <Route path={`${AppRoute.Films}/:id`} element={<FilmPage />} />
-        <Route path={`${AppRoute.Films}/:id${AppRoute.AddReview}`} element={<AddReviewPage />} />
-        <Route path={AppRoute.Player}>
-          <Route index element={<PlayerPage />} />
-          <Route path=':id' element={<PlayerPage />} />
+
+        <Route path={`${AppRoute.Films}/:id`} >
+          <Route index element={<FilmPage films={films} />} />
+          <Route path={AppRoute.AddReview} element={<AddReviewPage films={films} />} />
         </Route>
-        <Route path={AppRoute.Page404} element={<Page404 />} />
+
+        <Route path={`${AppRoute.Player}/:id`} element={<PlayerPage films={films} />} />
+        <Route path={AppRoute.NotFoundPage} element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

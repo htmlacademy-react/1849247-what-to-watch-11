@@ -24,6 +24,7 @@ function Header({
           </div>
         </li>
         <li className='user-block__item'>
+          {/* TODO: должна быть не ссылка, а кнопка */}
           <a className='user-block__link'>Sign out</a>
         </li>
       </ul>
