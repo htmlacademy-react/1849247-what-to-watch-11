@@ -1,6 +1,6 @@
-import { UserType } from '../types/user-type';
+import type { User } from '../types/user-type';
 
-export const user: UserType = {
+export const user: User = {
   avatarUrl: 'img/1.png',
   email: 'Oliver.conner@gmail.com',
   id: 1,

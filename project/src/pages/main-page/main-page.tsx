@@ -1,16 +1,17 @@
+import type { Film } from '../../types/films-type';
+
+import { useNavigate } from 'react-router-dom';
+
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import Catalog from '../../components/catalog/catalog';
-import { useNavigate } from 'react-router-dom';
-
 import AddToMyList from '../../components/add-to-my-list/add-to-my-list';
 import { AppRoute } from '../../const';
 
-import { FilmType } from '../../types/films-type';
 
 type MainPageProps = {
-  promoFilm: FilmType;
-  films: FilmType[];
+  promoFilm: Film;
+  films: Film[];
 };
 
 function MainPage({ promoFilm, films }: MainPageProps): JSX.Element {
@@ -25,7 +26,7 @@ function MainPage({ promoFilm, films }: MainPageProps): JSX.Element {
         </div>
         <h1 className='visually-hidden'>WTW</h1>
 
-        <Header isOnMainPage specifyingСlass='film-card__head' />
+        <Header specifyingСlass='film-card__head' />
 
         <div className='film-card__wrap'>
           <div className='film-card__info'>
@@ -46,8 +47,6 @@ function MainPage({ promoFilm, films }: MainPageProps): JSX.Element {
               </p>
 
               <div className='film-card__buttons'>
-
-                {/* TODO: Повторяющийся код */}
                 <button
                   className='btn btn--play film-card__button'
                   type='button'
@@ -68,7 +67,7 @@ function MainPage({ promoFilm, films }: MainPageProps): JSX.Element {
 
       <div className='page-content'>
         <Catalog isFilterRequired films={films}/>
-        <Footer isOnMainPage />
+        <Footer />
       </div>
     </>
   );

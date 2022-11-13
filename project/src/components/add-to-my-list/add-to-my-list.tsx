@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
+
 import { AppRoute } from '../../const';
 
 function AddToMyList(): JSX.Element {
-
   const navigate = useNavigate();
 
   return (

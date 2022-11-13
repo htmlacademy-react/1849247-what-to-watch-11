@@ -1,15 +1,19 @@
+import type { Film } from '../../types/films-type';
+
 import FilmCard from '../film-card/film-card';
-import { FilmType } from '../../types/films-type';
 
 type FilmCardListProps = {
-  films: FilmType[];
+  films: Film[];
 };
 
 function FilmCardList({ films }: FilmCardListProps): JSX.Element {
-  const renderFilmCards = (items: FilmType[]) =>
-    items.map((item) => <FilmCard key={item.id} film={item} />);
-
-  return <div className='catalog__films-list'>{renderFilmCards(films)}</div>;
+  return (
+    <div className='catalog__films-list'>
+      {films.map((film) => (
+        <FilmCard key={film.id} {...film} />
+      ))}
+    </div>
+  );
 }
 
 export default FilmCardList;

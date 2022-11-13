@@ -1,13 +1,9 @@
 import Logo from '../logo/logo';
 
-type FooterProps = {
-  isOnMainPage: boolean;
-};
-
-function Footer({ isOnMainPage }: FooterProps): JSX.Element {
+function Footer(): JSX.Element {
   return (
     <footer className='page-footer'>
-      <Logo isOnMainPage={isOnMainPage} isInFooter />
+      <Logo isFilled />
 
       <div className='copyright'>
         <p>© 2019 What to watch Ltd.</p>

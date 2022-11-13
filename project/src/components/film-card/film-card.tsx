@@ -1,23 +1,25 @@
+import type { Film } from '../../types/films-type';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { FilmType } from '../../types/films-type';
 import { AppRoute } from '../../const';
 
 type FilmCardProps = {
-  film: FilmType;
+  id: Film['id'];
+  name: Film['name'];
+  previewImage: Film['previewImage'];
+  // ВОПРОС: здесь можно как-то оптимизировать тип, чтобы написать только строку
+  // [propName]: Film['propName'] и это применилось для всех пропсов в компоненте
 };
 
-function FilmCard({ film }: FilmCardProps): JSX.Element {
-  const [filmCard] = useState(film);
+function FilmCard({ id, name, previewImage }: FilmCardProps): JSX.Element {
 
   return (
     <article className='small-film-card catalog__films-card'>
       <div className='small-film-card__image'>
-        <img src={filmCard.previewImage} alt={filmCard.name} width='280' height='175' />
+        <img src={previewImage} alt={name} width='280' height='175' />
       </div>
       <h3 className='small-film-card__title'>
-        <Link className='small-film-card__link' to={`${AppRoute.Films}/${filmCard.id}`}>
-          {filmCard.name}
+        <Link className='small-film-card__link' to={`${AppRoute.Films}/${id}`}>
+          {name}
         </Link>
       </h3>
     </article>

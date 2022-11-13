@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
+
 import { AppRoute } from '../../const';
 
 type ReviewBreadcrumbsProps = {
-  currentFilmName: string | undefined; // TODO: затипизировать без undefined - убрать оператор "?." из родителя
+  currentFilmName: string;
   currentFilmId: string;
 };
 

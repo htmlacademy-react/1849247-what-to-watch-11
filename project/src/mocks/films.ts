@@ -1,6 +1,6 @@
-import { FilmType } from '../types/films-type';
+import type { Film } from '../types/films-type';
 
-export const film: FilmType = {
+export const film: Film = {
   name: 'A Star Is Born',
   posterImage: 'https://11.react.pages.academy/static/film/poster/A_Star_Is_Born.jpg',
   previewImage: 'https://11.react.pages.academy/static/film/preview/A_Star_Is_Born.jpg',
@@ -22,7 +22,7 @@ export const film: FilmType = {
   previewVideoLink: 'https://11.react.pages.academy/static/film/video/traffic.mp4',
 };
 
-export const films: FilmType[] = [
+export const films: Film[] = [
   {
     name: 'Moonrise Kingdom',
     posterImage: 'https://11.react.pages.academy/static/film/poster/Moonrise_Kingdom.jpg',

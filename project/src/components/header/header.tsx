@@ -1,22 +1,21 @@
 import Logo from '../logo/logo';
 
 type HeaderProps = {
-  isOnMainPage: boolean;
-  specifyingСlass: string;
+  specifyingСlass?: string;
 };
 
 function Header({
   children,
-  isOnMainPage,
-  specifyingСlass,
+  specifyingСlass = '',
 }: React.PropsWithChildren<HeaderProps>): JSX.Element {
+
   return (
     <header className={`page-header ${specifyingСlass}`}>
-      <Logo isOnMainPage={isOnMainPage} isInFooter={false} />
+      <Logo isFilled={false} />
 
       {children}
 
-      {/* TODO: скрывать для неавторизованного пользователя */}
+      {/* МНЕ: скрывать для неавторизованного пользователя */}
       <ul className='user-block'>
         <li className='user-block__item'>
           <div className='user-block__avatar'>
@@ -24,7 +23,7 @@ function Header({
           </div>
         </li>
         <li className='user-block__item'>
-          {/* TODO: должна быть не ссылка, а кнопка */}
+          {/* МНЕ: должна быть не ссылка, а кнопка */}
           <a className='user-block__link'>Sign out</a>
         </li>
       </ul>

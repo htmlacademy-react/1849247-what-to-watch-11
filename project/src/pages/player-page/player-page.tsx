@@ -1,9 +1,10 @@
-import { useParams } from 'react-router-dom';
-import { FilmType } from '../../types/films-type';
+import type { Film } from '../../types/films-type';
+
 import { useState , MouseEvent } from 'react';
+import { useParams } from 'react-router-dom';
 
 type PlayerPageProps = {
-  films: FilmType[];
+  films: Film[];
 };
 
 function PlayerPage({ films }: PlayerPageProps): JSX.Element {
@@ -13,7 +14,7 @@ function PlayerPage({ films }: PlayerPageProps): JSX.Element {
   const handlePlayButtonClick = (evt: MouseEvent<HTMLButtonElement>) => {
     // eslint-disable-next-line no-console
     // console.log(evt);
-    // TODO: При клике - воспроизвдение видео
+    // МНЕ: При клике - воспроизвдение видео
   };
 
   return (
@@ -37,7 +38,8 @@ function PlayerPage({ films }: PlayerPageProps): JSX.Element {
               Toggler
             </div>
           </div>
-          {/* TODO: должно отображаться в виде 1:30:29 */}
+          {/* МНЕ: должно отображаться в виде 1:30:29
+          Использовать data-fns, day-js ... */}
           <div className='player__time-value'>{film?.runTime}</div>
         </div>
 
