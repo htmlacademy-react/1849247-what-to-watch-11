@@ -1,25 +1,28 @@
+import { Link } from 'react-router-dom';
+
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
+import { AppRoute } from '../../const';
 
-function Page404(): JSX.Element {
+function NotFoundPage(): JSX.Element {
   return (
     <div className='user-page'>
-      <Header isOnMainPage={false} specifyingСlass='user-page__head'>
+      <Header specifyingСlass='user-page__head'>
         <h1 className='page-title user-page__title'>Sign in</h1>
       </Header>
 
       <div style={{ textAlign: 'center', marginBottom: '100px' }}>
-        {/* TODO: доработать стили, поправить классы */}
+        {/* МНЕ: доработать стили, поправить классы */}
         <h2 style={{ fontSize: '120px' }}>404</h2>
         <p style={{ fontSize: '20px' }}>Not Found</p>
-        <a style={{ fontSize: '20px', color: 'inherit' }} href='main.html'>
+        <Link style={{ fontSize: '20px', color: 'inherit' }} to={AppRoute.Main}>
           Back to main page
-        </a>
+        </Link>
       </div>
 
-      <Footer isOnMainPage={false} />
+      <Footer />
     </div>
   );
 }
 
-export default Page404;
+export default NotFoundPage;

@@ -4,7 +4,7 @@ import Footer from '../../components/footer/footer';
 function SignInPage(): JSX.Element {
   return (
     <div className='user-page'>
-      <Header isOnMainPage={false} specifyingСlass='user-page__head'>
+      <Header specifyingСlass='user-page__head'>
         <h1 className='page-title user-page__title'>Sign in</h1>
       </Header>
 
@@ -44,7 +44,7 @@ function SignInPage(): JSX.Element {
         </form>
       </div>
 
-      <Footer isOnMainPage={false} />
+      <Footer />
     </div>
   );
 }

@@ -1,13 +1,30 @@
+import type { Film } from '../../types/films-type';
+
+import { useState , MouseEvent } from 'react';
 import { useParams } from 'react-router-dom';
 
-function PlayerPage(): JSX.Element {
-  const params = useParams();
-  // eslint-disable-next-line no-console, @typescript-eslint/restrict-template-expressions
-  console.log(`Открывается плеер для фильмв с id=${params.id}`);
+type PlayerPageProps = {
+  films: Film[];
+};
+
+function PlayerPage({ films }: PlayerPageProps): JSX.Element {
+  const { id } = useParams();
+  const [film] = useState(films.find((item) => item.id === Number(id)));
+
+  const handlePlayButtonClick = (evt: MouseEvent<HTMLButtonElement>) => {
+    // eslint-disable-next-line no-console
+    // console.log(evt);
+    // МНЕ: При клике - воспроизвдение видео
+  };
 
   return (
     <div className='player'>
-      <video src='#' className='player__video' poster='img/player-poster.jpg'></video>
+      <video
+        src={film?.videoLink}
+        className='player__video'
+        poster={film?.previewImage}
+      >
+      </video>
 
       <button type='button' className='player__exit'>
         Exit
@@ -17,15 +34,17 @@ function PlayerPage(): JSX.Element {
         <div className='player__controls-row'>
           <div className='player__time'>
             <progress className='player__progress' value='30' max='100'></progress>
-            <div className='player__toggler' style={{ left: 30 }}>
+            <div className='player__toggler' style={{ left: '30%' }}>
               Toggler
             </div>
           </div>
-          <div className='player__time-value'>1:30:29</div>
+          {/* МНЕ: должно отображаться в виде 1:30:29
+          Использовать data-fns, day-js ... */}
+          <div className='player__time-value'>{film?.runTime}</div>
         </div>
 
         <div className='player__controls-row'>
-          <button type='button' className='player__play'>
+          <button type='button' className='player__play' onClick={handlePlayButtonClick}>
             <svg viewBox='0 0 19 19' width='19' height='19'>
               <use xlinkHref='#play-s'></use>
             </svg>
